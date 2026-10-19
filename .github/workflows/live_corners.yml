@@ -1,0 +1,44 @@
+name: Corner in diretta
+
+on:
+  workflow_dispatch:        # lanciato dal bot
+    inputs:
+      token:
+        description: "Identificativo del monitoraggio"
+        required: true
+      matches:
+        description: "Partite da seguire (JSON)"
+        required: true
+
+# Un monitoraggio per volta per ogni identificativo
+concurrency:
+  group: live-${{ inputs.token }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dipendenze
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Segui le partite
+        env:
+          LIVE_TOKEN: ${{ inputs.token }}
+          LIVE_MATCHES: ${{ inputs.matches }}
+          LIVE_CALLBACK: ${{ secrets.LIVE_CALLBACK }}
+          LIVE_SECRET: ${{ secrets.LIVE_SECRET }}
+        run: python live_scraper.py
