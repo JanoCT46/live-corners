@@ -34,6 +34,10 @@ LEAGUE_BASES = {
     "La Liga": "https://www.diretta.it/calcio/spagna/laliga/",
     "Bundesliga": "https://www.diretta.it/calcio/germania/bundesliga/",
     "Ligue 1": "https://www.diretta.it/calcio/francia/ligue-1/",
+    "MLS": "https://www.diretta.it/calcio/usa/mls/",
+    "Serie A Brasile": "https://www.diretta.it/calcio/brasile/serie-a-betano/",
+    "Bundesliga Austria": "https://www.diretta.it/calcio/austria/bundesliga/",
+    "Eredivisie": "https://www.diretta.it/calcio/olanda/eredivisie/",
 }
 # Pagine in cui cercare la partita: prima il calendario, poi la pagina della lega, poi i risultati
 LEAGUE_SUBPAGES = ["calendario/", "", "risultati/"]
