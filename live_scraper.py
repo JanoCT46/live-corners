@@ -104,11 +104,13 @@ async def accept_cookies(page):
 
 async def find_match_url(page, match):
     """Cerca la partita nelle pagine della lega confrontando i nomi delle squadre."""
-    base = LEAGUE_BASES.get(match.get("league") or "")
-    if not base:
+    bases = LEAGUE_BASES.get(match.get("league") or "")
+    if not bases:
         print(f"   ⚠️ Lega sconosciuta per {match['home']} - {match['away']}: {match.get('league')}")
         return None
-    for sub in LEAGUE_SUBPAGES:
+    if isinstance(bases, str):
+        bases = [bases]
+    for base, sub in [(b, sp) for b in bases for sp in LEAGUE_SUBPAGES]:
         try:
             await page.goto(base + sub, timeout=60000)
             await accept_cookies(page)
