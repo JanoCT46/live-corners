@@ -38,6 +38,9 @@ LEAGUE_BASES = {
     "Serie A Brasile": "https://www.diretta.it/calcio/brasile/serie-a-betano/",
     "Bundesliga Austria": "https://www.diretta.it/calcio/austria/bundesliga/",
     "Eredivisie": "https://www.diretta.it/calcio/olanda/eredivisie/",
+    "Serie C": ["https://www.diretta.it/calcio/italia/serie-c-girone-a/",
+                "https://www.diretta.it/calcio/italia/serie-c-girone-b/",
+                "https://www.diretta.it/calcio/italia/serie-c-girone-c/"],
 }
 # Pagine in cui cercare la partita: prima il calendario, poi la pagina della lega, poi i risultati
 LEAGUE_SUBPAGES = ["calendario/", "", "risultati/"]
