@@ -41,4 +41,4 @@ jobs:
           LIVE_MATCHES: ${{ inputs.matches }}
           LIVE_CALLBACK: ${{ secrets.LIVE_CALLBACK }}
           LIVE_SECRET: ${{ secrets.LIVE_SECRET }}
-        run: python live_scraper.py
+        run: python -u live_scraper.py
